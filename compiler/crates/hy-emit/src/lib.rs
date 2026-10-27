@@ -1749,8 +1749,10 @@ impl Emitter {
                     .join(", ");
                 if rs.is_empty() {
                     format!("func({})", ps)
-                } else {
+                } else if results.len() == 1 {
                     format!("func({}) {}", ps, rs)
+                } else {
+                    format!("func({}) ({})", ps, rs)
                 }
             }
         }
